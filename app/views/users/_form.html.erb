@@ -1,4 +1,5 @@
 <%= link_to 'Test Link', '/users/foogoo' %>
+
 <%= simple_form_for @user, html: {class: 'form-horizontal'} do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -14,16 +15,19 @@
 
     <%= f.input :name %>
     <%= f.input :email %>
-    <%= f.association :notes, label_method: :note, input_html: {class: 'selectpicker', data: {}} %>
+    <%= f.association :notes, label_method: :note, input_html: {class: 'selectpicker'} %>
 
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<%= content_for :head %>
 <script>
 var loady = function() {
   $('*:not(.bootstrap-select) > .selectpicker').selectpicker('refresh');
 }
 $(document).on("turbolinks:load", loady);
 </script>
+<% end %>
