@@ -22,12 +22,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-
-<%= content_for :head %>
-<script>
-var loady = function() {
-  $('*:not(.bootstrap-select) > .selectpicker').selectpicker('refresh');
-}
-$(document).on("turbolinks:load", loady);
-</script>
-<% end %>
