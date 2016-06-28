@@ -1,0 +1,29 @@
+<%= link_to 'Test Link', '/users/foogoo' %>
+<%= simple_form_for @user, html: {class: 'form-horizontal'} do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.association :notes, label_method: :note, input_html: {class: 'selectpicker', data: {}} %>
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script>
+var loady = function() {
+  $('*:not(.bootstrap-select) > .selectpicker').selectpicker('refresh');
+}
+$(document).on("turbolinks:load", loady);
+</script>
