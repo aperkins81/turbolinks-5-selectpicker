@@ -1,7 +1,5 @@
-var loady = function() {
-  //$('*:not(.bootstrap-select) > .selectpicker').selectpicker('refresh');
+$(document).on("turbolinks:load", function() { $('.selectpicker').selectpicker(); });
+$(document).on("turbolinks:before-cache", function() {
   var remove = $('.bootstrap-select');
   $(remove).replaceWith($(remove).contents('.selectpicker'));
-  $('.selectpicker').selectpicker();
-}
-$(document).on("turbolinks:load", loady);
+});
